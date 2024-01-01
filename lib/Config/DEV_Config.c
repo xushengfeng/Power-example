@@ -161,10 +161,6 @@ void DEV_Delay_us(uint32_t xus)
 void DEV_GPIO_Init(void)
 {
 
-    DEV_GPIO_Mode(LCD_RST_PIN, 1);
-    DEV_GPIO_Mode(LCD_DC_PIN, 1);
-    DEV_GPIO_Mode(LCD_CS_PIN, 1);
-    DEV_GPIO_Mode(LCD_BL_PIN, 1);
     DEV_GPIO_Mode(LED_STA_PIN, 1);
     DEV_GPIO_Mode(POWER_CTRL_PIN, 1);
 
@@ -178,10 +174,6 @@ void DEV_GPIO_Init(void)
     
     DEV_Digital_Write(LED_STA_PIN, 0);
     DEV_Digital_Write(POWER_CTRL_PIN, 0);
-
-    DEV_Digital_Write(LCD_CS_PIN, 1);
-    DEV_Digital_Write(LCD_DC_PIN, 0);
-    DEV_Digital_Write(LCD_BL_PIN, 1);
 }
 
 
@@ -200,8 +192,6 @@ uint8_t DEV_Module_Init(void)
     adc_gpio_init(BAT_ADC_PIN);
     adc_select_input(BAR_CHANNEL);
     // PWM Config
-    gpio_set_function(LCD_BL_PIN, GPIO_FUNC_PWM);
-    slice_num = pwm_gpio_to_slice_num(LCD_BL_PIN);
     pwm_set_wrap(slice_num, 100);
     pwm_set_chan_level(slice_num, PWM_CHAN_B, 1);
     pwm_set_clkdiv(slice_num, 50);
@@ -209,8 +199,6 @@ uint8_t DEV_Module_Init(void)
 
     // SPI Config
     spi_init(SPI_PORT, 10000 * 1000);
-    gpio_set_function(LCD_CLK_PIN, GPIO_FUNC_SPI);
-    gpio_set_function(LCD_MOSI_PIN, GPIO_FUNC_SPI);
     // I2C Config
     i2c_init(I2C_PORT, 400 * 1000);
     gpio_set_function(DEV_SDA_PIN, GPIO_FUNC_I2C);

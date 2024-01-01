@@ -16,9 +16,6 @@ pico_sdk_init()
 
 #添加编译子目录
 add_subdirectory(./lib/Config)
-add_subdirectory(./lib/GUI)
-add_subdirectory(./lib/LCD)
-add_subdirectory(./lib/Fonts)
 add_subdirectory(./lib/INA219)
 add_subdirectory(./lib/QMI8658)
 add_subdirectory(./lib/MP28167)
@@ -27,8 +24,6 @@ add_subdirectory(./lib/Power_Management_Lib)
 add_subdirectory(./examples)
 #添加头文件目录
 include_directories(./lib/Config)
-include_directories(./lib/GUI)
-include_directories(./lib/LCD)
 include_directories(./lib/INA219)
 include_directories(./lib/QMI8658)
 include_directories(./lib/MP28167)
@@ -49,7 +44,7 @@ pico_enable_stdio_usb(Power_Management_HAT 1)
 pico_add_extra_outputs(Power_Management_HAT)
 
 # Add the standard library to the build
-target_link_libraries(Power_Management_HAT examples LCD INA219 PCF85063A Power_Management_Lib QMI8658 GUI Fonts Config pico_stdlib hardware_i2c )
+target_link_libraries(Power_Management_HAT examples INA219 PCF85063A Power_Management_Lib QMI8658 Config pico_stdlib hardware_i2c )
 
 
 

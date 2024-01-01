@@ -30,9 +30,7 @@
 #ifndef _EXAMPLES_H_
 #define _EXAMPLES_H_
 
-#include "GUI_Paint.h"
 #include "DEV_Config.h"
-#include "LCD_1in14_V2.h"
 #include "pico/multicore.h"
 #include "Power_Management_Lib.h"
 #include "MP28167.h"
